@@ -1,7 +1,71 @@
 body {
-  background-color: red;
+  background-color: rgba(16,50,130,255);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title headers at top of page */
+.header {
+  /* background-color: rgba(16,50,130,255); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
-  color: blue;
+  color: rgb(10, 10, 121);
+}
+
+h2 {
+  color: rgb(32, 32, 179);
+}
+
+h3 {
+  align-self: flex-start;
+}
+
+/* Container for headings */
+.outerContainer {
+  background: purple;
+}
+
+/* Entire calendar container */
+.calendarContainer {
+  border: 3px solid rgb(8, 8, 8);
+  background-color: yellow;
+}
+
+/* Add unit at top of units module */
+.addUnit {
+  border: 1px solid black;
+  /* background:rgb(248, 133, 133); */
+  background-color: orange;
+}
+
+.currentUnits {
+  background-color: yellow;
+}
+
+.btn {
+  background-color: rgb(148, 125, 250);
+}
+
+/* Container for all units */
+.unit {
+  border: 1px solid rgb(10, 9, 9);
+  background-color: rgb(217, 226, 247);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Individual unit display */
+.singleUnit {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(111, 149, 238);
 }

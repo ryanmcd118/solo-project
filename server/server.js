@@ -1,21 +1,51 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 
+const app = express();
+
+const apiRouter = require('./routes/api');
+
+/**
+ * handle parsing request body
+ */
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+/**
+ * serve the bundle file
+ */
 app.use('/build', express.static(path.join(__dirname, '../build')));
 
-app.get('/', (req, res) => {
-  res
-    .status(200)
-    .set('Content-Type', 'text/html; charset=UTF-8')
-    .sendFile(path.resolve(__dirname, '../client/index.html'));
-});
+/**
+ * handle requests for static files
+ */
+app.use(express.static(path.resolve(__dirname, '../client')));
 
-app.get('/styles.css', (req, res) => {
-  res
-    .status(200)
-    .set('Content-Type', 'text/html; charset=UTF-8')
-    .sendFile(path.resolve(__dirname, '../client/styles.css'));
-});
+/**
+ * define route handlers
+ */
+app.use('/api', apiRouter);
 
-app.listen(3000, () => console.log('testing: ', process.env.NODE_ENV));
+// catch-all route handler for any requests to an unknown route
+app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
+
+/**
+ * express error handler
+ */
+// app.use((err, req, res, next) => {
+//   const defaultErr = {
+//     log: 'Express error handler caught unknown middleware error',
+//     status: 500,
+//     message: { err: 'An error occurred' },
+//   };
+//   const errorObj = Object.assign({}, defaultErr, err);
+//   console.log(errorObj.log);
+//   return res.status(errorObj.status).json(errorObj.message);
+// });
+
+/**
+ * start server
+ */
+app.listen(3000);
+
+module.exports = app;
