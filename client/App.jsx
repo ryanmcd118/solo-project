@@ -10,21 +10,48 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      units: ['this is a test unit', 'so is this', 'hope these are on separate lines', 'new words', 'farewell'],
+      units: ['this is a test unit', 'so is this', 'hope these are on separate lines', 'hey, a box!', 'new words', 'farewell'],
     };
 
-    // this.update = this.update.bind(this);
+    this.addUnit = this.addUnit.bind(this);
+    this.updateUnit = this.updateUnit.bind(this);
+    this.addResources = this.addResources.bind(this);
+    this.deleteUnit = this.deleteUnit.bind(this);
   }
 
-  // update(event, id) {
-  //   console.log('BUTTON CLICKED');
-  //   // this.state.units = this.state.newUnits;
-  //   // this.setState({ units: this.state.units})
-  // }
+  addUnit(event, id) {
+    console.log('ADD A UNIT BUTTON CLICKED');
+    // this.state.units = this.state.newUnits;
+    // this.setState({ units: this.state.units})
+  }
+
+  updateUnit(event, id) {
+    console.log('UPDATE UNIT BUTTON CLICKED');
+    // this.state.units = this.state.newUnits;
+    // this.setState({ units: this.state.units})
+  }
+
+  addResources(event, id) {
+    console.log('ADD RESOURCES BUTTON CLICKED');
+    // this.state.units = this.state.newUnits;
+    // this.setState({ units: this.state.units})
+  }
+
+  deleteUnit(event, id) {
+    console.log('DELETE UNIT BUTTON CLICKED');
+    // this.state.units = this.state.newUnits;
+    // this.setState({ units: this.state.units})
+  }
   
   render() {
     return (
-      <MainContainer units={this.state.units} update={this.state.update}/>
+      <MainContainer 
+        units={this.state.units} 
+        addUnit={this.addUnit} 
+        updateUnit={this.updateUnit} 
+        addResources={this.addResources} 
+        deleteUnit={this.deleteUnit}
+      />
     )
   }
 }
