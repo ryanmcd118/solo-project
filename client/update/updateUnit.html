@@ -1,0 +1,72 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Update unit</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+  <div = id="nav">
+    <h1>Codesmith Immersive Schedule</h1>
+  </div>
+
+  <div id="updateUnitForm">
+    <h2 id="updateTitle">Update a unit</h2>
+    <div id="updateUnitDay">
+      <label>Enter new unit day: </label>
+      <input id="unitDay" name="unitDay" type="text" />
+    </div>
+
+    <div id="updateTopic">
+      <label>Enter new topic: </label>
+      <input id="topic" name="topic" type="text" />
+    </div>
+
+    <div id="updateDescription">
+      <label>Enter new description: </label>
+      <textarea id="descripBox" name="descripBox" rows="5"></textarea>
+    </div>
+    <button id="btn">S U B M I T</button>
+  </div>
+
+  <div id="root"></div>
+  
+  <!-- <div>
+    <div className="updateHeaders">
+      <h1>Update unot</h1>
+    </div>
+
+    <div className="updateUnit">
+      <form onChange={(event) => {
+          console.log('onchange is triggered', event.target.value);
+          console.log('event id', event.target.id)
+          // console.log('onChange invoked')
+          this.props.onChange(event)
+        }}>
+        <div className="unitDay">
+          <label htmlFor="unitDay">Enter new unit day: </label>
+          <input id="unitDay" name="unitDay" type="text" />
+        </div>
+
+        <div className="topic">
+          <label htmlFor="topic">Enter new topic: </label>
+          <input id="topic" name="topic" type="text" />
+        </div>
+
+        <div className="description">
+          <label htmlFor="description">Enter new description: </label>
+          <input id="description" name="description" type="text" />
+        </div>
+
+        <button
+          className="btn"
+          onClick={(event) => this.props.handleSubmit(event)}
+          >Submit change
+        </button>
+      </form>
+    </div>
+  </div>   -->
+
+  <!-- script for webpack and webpack-dev-server challenge -->
+  <script src="build/bundle.js"></script>
+</body>
+</html>

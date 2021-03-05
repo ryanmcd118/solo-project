@@ -14,12 +14,38 @@ app.use(express.urlencoded({ extended: true }));
 /**
  * serve the bundle file
  */
-app.use('/build', express.static(path.join(__dirname, '../build')));
+app.use('/build', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../build'));
+});
+// app.use('/build', express.static(path.join(__dirname, '../build')));
 
 /**
  * handle requests for static files
  */
-app.use(express.static(path.resolve(__dirname, '../client')));
+app.get('/api/updateUnit', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/update/updateUnit.html'));
+});
+
+// app.get('/api/updateUnit/', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../client/update/updateUnit.html'));
+// });
+
+app.get('/api/styles.css', (req, res) => {
+  res
+    .status(200)
+    .set('Content-Type', 'text/html; charset=UTF-8')
+    // .sendFile(path.resolve(__dirname, '../client/update/updateStyles.css'));
+    .sendFile(path.resolve(__dirname, '../client/update/styles.css'));
+});
+
+// app.use(express.static(path.resolve(__dirname, '../client')));
+// app.use('/updateUnit', express.static(path.resolve(__dirname, '../client/update')));
+
+// app.use('/updateUnit', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../client/update'));
+// });
+
+// app.use('/updateUnit', express.static(path.resolve(__dirname, '../client/updateUnit')));
 
 /**
  * define route handlers

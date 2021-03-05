@@ -3,14 +3,17 @@ import Unit from './Unit';
 
 class Calendar extends Component {
   render() {
-    // console.log('this.props', this.props.units)
+    // console.log('Calendar this.props.units', this.props.units)
     // const units = ['this is a test unit\n', 'so is this\n', 'hope these are on separate lines\n', 'new words\n', 'farewell\n'];
     const newUnits = [];
     for (let i = 0; i < this.props.units.length; i++) {
       newUnits.push(
         <Unit
           key={`Unit${i}`}
-          text={this.props.units[i]}
+          unitDay={this.props.units[i].unitDay}
+          topic={this.props.units[i].topic}
+          description={this.props.units[i].description}
+          onChange={this.props.onChange}
           updateUnit={this.props.updateUnit} 
           addResources={this.props.addResources} 
           deleteUnit={this.props.deleteUnit}

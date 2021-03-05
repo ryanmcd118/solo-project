@@ -1,29 +1,42 @@
 import React, { Component } from 'react';
+// import { useHistory } from 'react-router-dom';
+import UpdateUnit from './UpdateUnit';
 
 class Unit extends Component {
 
   render() {
-    // console.log('this.props', this.props);
+    // console.log('UNIT this.props', this.props);
     return(
       <div className="singleUnit">
-        <h3>Unit Name</h3>
-        {this.props.text}
+        <div className="unitHeaders">
+          <h4>{this.props.unitDay}</h4>
+          <h4>{this.props.topic}</h4>
+        </div>
+        <p className="unitDescription">{this.props.description}</p>
         <div className="unitButtons">
-          <button 
+        <button 
             className="innerButton"
-            onClick={(event) => this.props.updateUnit(event, this.props.index)}
+            onClick={(event) => {
+              // window.location.href='/api/updateUnit';
+              this.props.updateUnit(event);
+            }}
             >Update unit info
           </button>
+          {/* <button 
+            className="innerButton"
+            onClick={(event) => this.props.updateUnit(event)}
+            >Update unit info
+          </button> */}
 
           <button 
             className="innerButton"
-            onClick={(event) => this.props.addResources(event, this.props.index)}
+            onClick={(event) => this.props.addResources(event)}
             >Add resources
           </button>
 
           <button 
             className="innerButton"
-            onClick={(event) => this.props.deleteUnit(event, this.props.index)}
+            onClick={(event) => this.props.deleteUnit(event)}
             >Delete unit
           </button>
         </div>

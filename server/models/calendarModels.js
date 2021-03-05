@@ -7,7 +7,7 @@ mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // sets the name of the DB that our collections are part of
-  dbName: 'calendar',
+  dbName: 'solo-project',
 })
   .then(() => console.log('Connected to Mongo DB.'))
   .catch((err) => console.log(err));
@@ -15,12 +15,13 @@ mongoose.connect(MONGO_URI, {
 const Schema = mongoose.Schema;
 
 const calendarSchema = new Schema({
-  unitDay: String,
-  topic: String,
+  unitDay: { type: String, required: true },
+  topic: { type: String, required: true },
+  description: { type: String, required: true },
 });
 
 const Day = mongoose.model('day', calendarSchema);
 
 module.exports = {
   Day,
-}
+};

@@ -1,38 +1,50 @@
+const { Day } = require('../models/calendarModels');
 const models = require('../models/calendarModels');
 
 const calendarController = {};
 
-calendarController.getUnits = (req, res, next) => {
-  console.log('entered getUnit controller');
-  console.log('DAY FIND:', models.Day.find());
-  // models.Day.find()
-  //   .then((unit) => {
-  //     res.locals.units = unit;
-  //     return next();
-  //   })
-  //   .catch((e) => next(e));
+calendarController.getUnits = async (req, res, next) => {
+  try {
+    const units = await Day.find({});
+    res.locals.units = units;
+    return next();
+  } catch (err) {
+    return next(err);
+  }
+};
+
+calendarController.updateUnit = (req, res, next) => {
+  console.log('inside UPDATE UNIT');
+  // console.log('req body', req.body);
+  console.log('req body id', req.body.id);
+  console.log('req params', req.params);
+
+  Day.find(req.body, (err, unit) => {
+    if (err) {
+      return next('Error in updateUnit: ', JSON.stringify(err));
+    }
+    console.log('find unit', unit);
+    res.redirect('/updateUnit');
+    return next();
+  });
+  // try {
+  //   const updating = Day.find({});
+    
+  //   next();
+  // } catch (err) {
+  //   return next(err);
+  // }
 };
 
 calendarController.addUnit = (req, res, next) => {
-  console.log('entered addUnit controller');
-
-  // const testUnit = new models.Unit({
-  //   unitDay: 'week 2 day 1',
-  //   topic: 'DOM Manipulation',
-  // });
-
-  const newUnit = new models.Day({
-    name: req.body.unitDay,
-    topic: req.body.topic,
-  });
-
-  return newUnit.save((err, data) => {
-    if (err) {
-      return next(err);
-    }
-    res.locals.units = data;
-    return next();
-  });
+  console.log('addUnit controller REQ.BODY:', req.body.unitDay, req.body.topic);
+  try {
+    Day.create(req.body);
+    // console.log('unit created');
+    next();
+  } catch (err) {
+    return next(err);
+  }
 };
 
 module.exports = calendarController;

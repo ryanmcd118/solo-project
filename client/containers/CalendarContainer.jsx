@@ -6,14 +6,15 @@ class CalendarContainer extends Component {
   render() {
     return (
       <div className="currentUnits">
-        <h3>Units:</h3>
+        <h3 className='unitsHeader'>Junior Portion Technical Topics</h3>
         <Calendar 
           key={`FullCalendar`}
           units={this.props.units} 
+          onChange={this.props.onChange}
           updateUnit={this.props.updateUnit} 
           addResources={this.props.addResources} 
           deleteUnit={this.props.deleteUnit}
-        />;
+        />
       </div>
       
     )
